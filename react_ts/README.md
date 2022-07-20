@@ -42,9 +42,15 @@
 	... add paths as required
 },
 ```
--	Add the following to the `resolve` object under common webpack module exports
+-	In `webpack.common.js` import the following package and use it in resolve.plugins under common webpack module exports
 ```
-plugins: [new TsconfigPathsPlugin()],
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+...
+resolve: {
+	extensions: [".tsx", ".ts", ".jsx", ".js"],
+	plugins: [new TsconfigPathsPlugin()],	<< THIS
+},
+...
 ```
 
 ### .env file setup: (TODO: env files for different environments)
