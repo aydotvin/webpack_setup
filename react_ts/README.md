@@ -44,7 +44,7 @@
 ```
 -	Add the following to the `resolve` object under common webpack module exports
 ```
-	plugins: [new TsconfigPathsPlugin()],
+plugins: [new TsconfigPathsPlugin()],
 ```
 
 ### .env file setup: (TODO: env files for different environments)
