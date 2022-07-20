@@ -127,8 +127,8 @@ module.exports = (envs, args) => {
 		"skipLibCheck": true /* Skip type checking of declaration files. */,
 		"forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
 		"resolveJsonModule": true,
-		"removeComments": true
-		// "allowJs": true 			/* Allow javascript files to be compiled. Useful when migrating JS to TS */,
+		"removeComments": true,
+		"allowJs": true 			/* Allow javascript files to be compiled. Useful when migrating JS to TS */,
 		// "checkJs": true 			/* Report errors in .js files. Works in tandem with allowJs. */,
 	},
 	"include": ["src/**/*"] //	Tell TS to monitor everything inside the src folder
