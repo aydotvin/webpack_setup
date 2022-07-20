@@ -28,7 +28,7 @@
 	-	`webpack.dev.js` - mode set to development, dev specific properties such as devtool, devServer, dev specific extra plugins, etc.
 	-	`webpack.prod.js` - mode set to production, prod specific optimisation stuff added here.
 	-	Import the common config in dev and prod files and use it with merge function.
-	-	`@pmmmwh/react-refresh-webpack-plugin` - this preserves the state values when other files/styles are updated in the browser due to webpack listening to changes.
+	-	`@pmmmwh/react-refresh-webpack-plugin` - this preserves the state values when OTHER files/styles are updated in the browser due to webpack listening to changes.
 
 ### Absolute path setup:
 -	npm i -D tsconfig-paths-webpack-plugin (already installed in the above webpack step)
@@ -52,6 +52,7 @@ resolve: {
 },
 ...
 ```
+-   This works in scss and css files too.
 
 ### .env file setup: (TODO: env files for different environments)
 -	Create .env file in root directory and add the keys as required.
