@@ -34,13 +34,13 @@
 -	npm i -D tsconfig-paths-webpack-plugin (already installed in the above webpack step)
 -	Add the following compiler options to the `tsconfig.json`
 ```
-	"baseUrl": "./",
-	"paths": {
-		"Src/*": ["./src/*"],
-		"Component/*": ["./src/components/*"],
-		"Asset/*": ["./src/assets/*"],
-		... add paths as required
-	},
+"baseUrl": "./",
+"paths": {
+	"Src/*": ["./src/*"],
+	"Component/*": ["./src/components/*"],
+	"Asset/*": ["./src/assets/*"],
+	... add paths as required
+},
 ```
 -	Add the following to the `resolve` object under common webpack module exports
 ```
@@ -55,15 +55,15 @@ ENVKEY1=envvalue1
 -	`npm i -D dotenv-webpack` (already installed in the above webpack step)
 -	Import the following in common webpack config and call it under plugins.
 ```
-	const Dotenv = require("dotenv-webpack");
-	...
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, "..", "./src/index.html"),
-		}),
-		new Dotenv(),	<< THIS
-	],
-	...
+const Dotenv = require("dotenv-webpack");
+...
+plugins: [
+	new HtmlWebpackPlugin({
+		template: path.resolve(__dirname, "..", "./src/index.html"),
+	}),
+	new Dotenv(),	<< THIS
+],
+...
 ```
 -	Access in the files the following way.
 ```
@@ -73,11 +73,11 @@ console.log(process.env.ENVKEY1);
 ### Declarations setup:
 -	Add the declarations file (declarations.d.ts) in src folder with the following code in it.
 ```
-	declare module "*.module.css";
-	declare module "*.module.scss";
-	declare module "*.module.sass";
-	declare module "*.jpg";
-	... more to be added here
+declare module "*.module.css";
+declare module "*.module.scss";
+declare module "*.module.sass";
+declare module "*.jpg";
+... more to be added here
 ```
 
 ### package.json script setup:
@@ -147,12 +147,12 @@ module.exports = (envs, args) => {
 
 -	`.prettierrc.js` config file data:
 ```
-	module.exports = {
-		semi: true,
-		trailingComma: "all",
-		singleQuote: false,
-		printWidth: 180,
-		tabWidth: 4,
-		endOfLine: "auto",
-	};
+module.exports = {
+	semi: true,
+	trailingComma: "all",
+	singleQuote: false,
+	printWidth: 180,
+	tabWidth: 4,
+	endOfLine: "auto",
+};
 ```
