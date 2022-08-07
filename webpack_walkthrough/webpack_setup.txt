@@ -1,0 +1,265 @@
+Webpack: This takes all the js code is compiled and added to one js file which is used to run the app. It also bundles all the assets together for the client to access.
+
+Commands to run webpack:
+{
+    -   Direct command:
+    {
+        -   npx webpack
+            -   By default config file name is webpack.config.js. If it is there it will use it, else webpack will use its inbuilt config for bundling.
+        -   npx webpack --config <webpack_config_filename.js>
+    }
+
+    -   To run via a script:
+    {
+        "scripts": {
+            "build": "webpack"
+        },  
+
+        In terminal -> npm run build
+    }
+}
+
+Basic setup:
+{
+    mode:
+    {
+        -   "development"/"production"/"none"
+        -   This can be used when there are different webpack config files for different environments.
+    }
+
+    entry:
+    {
+        -   The entry point for the app can be declared here. Webpack will use this and build a dependency graph for the entire app.
+
+        -   Syntax
+        {
+            -   entry: "./src/index.js" - single entry (OR)
+            -   entry: ["./src/index1.js", "./src/index2.js"] - multiple entries (OR)
+            
+            -   When using the below format, use the optimization.splitChunks.chunks = "all"
+            -   entry: {
+                    a1: "./src/index.js",
+                    a2: {
+                        dependOn: "a1",     // here this a1 file will be loaded first and then the import file will be loaded.
+                        import: "./src/adminApp.js"
+                    },
+                    a3: "./src/app.js"
+                },
+        }
+        
+        -   Ref:
+        {
+            https://webpack.js.org/concepts/entry-points/#scenarios
+            https://webpack.js.org/concepts/entry-points/#multi-page-application
+        }
+    }
+
+    output:
+    {
+        -   File name types:
+        {
+            -   filename: "[name].[contenthash].bundle.js" // where name is a1, a2, a3 given in entry. By default it is "main"
+            -   filename: "[name].bundle.js",
+            -   filename: "bundle.js",  //  If a single entry file is used.
+        }
+
+        -   Syntax
+        {
+            output: { path: path.join(__dirname, "/public"), filename: "[name].bundle.js", clean: true }
+
+            path:
+                -   This defines where the bundled stuff should be placed.
+                -   By default it gets placed into dist folder in root.
+
+            filename:
+                -   Name of the js file that is added after bundling.
+                -   By default name is either a1, a2, a3 if entry is in that format, else it's main.js.
+                -   If multiple entries with names is defined, then there will be multiple bundled js files.
+
+            clean:
+                -   true - removes any existing files in the public folder and builds it from scratch.   
+        }
+
+        -   Ref:
+        {
+            https://webpack.js.org/guides/output-management/#the-manifest
+            https://webpack.js.org/guides/development#using-webpack-dev-middleware
+        }
+    }
+
+    plugins:
+    {
+        -   html-webpack-plugin (npm i html-webpack-plugin --save-dev)
+        {
+            -   Webpack will take the bundled js file(s) and include them in this html file in the output folder.
+            
+            -   Syntax
+            {
+                -   plugins: [new HtmlWebpackPlugin()]
+                -   This will create a index.html in the output folder and add the script tags in it for the bundled js files.
+                
+                -   plugins: [
+                        new HtmlWebpackPlugin({
+                            template: "./src/index.html",
+                        }),
+                    ],
+                -   This will take the custom html template that is in src, adds the script tags to that and puts this html in the output folder.
+            
+                -   If there are multiple bundles, then multiple script tags will be there in the final html.
+            }
+        }
+    }
+
+    module:
+    {
+        -   These are used to tell webpack what to do with different file types and which loader to use to resolve them.
+        -   All the loaders are declared under module.rules array
+
+        -   .js
+        {
+            -   npm i --save-dev babel-loader @babel/preset-react @babel/preset-env @babel/plugin-transform-react-jsx
+            
+            -   In .babelrc file, add the following object to translate react syntax to js.
+            {
+                {
+                    "presets": ["@babel/preset-react", "@babel/preset-env"]
+                }
+            }
+
+            -   In .babelrc object add the following property to remove the dependency of importing react in every file.
+            {
+                "plugins": [
+                    [
+                        "@babel/plugin-transform-react-jsx",
+                        {
+                            "runtime": "automatic"
+                        }
+                    ]
+                ]
+            }
+
+            -   Loader for js, jsx
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: "babel-loader",
+            }
+        }
+
+        -   .css, .scss
+        {
+            -   npm i --save-dev css-loader style-loader sass-loader sass
+            -   Loader
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: ["style-loader", "css-loader", "sass-loader"],
+            }
+        }
+
+        -   images
+        {
+            -   Loader
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: "asset/resource",
+            }
+        }
+
+        -   fonts
+        {
+            -   Loader
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: "asset/resource",
+            }
+        }
+
+        -   other file types
+        {
+            {
+                test: /\.(csv|tsv)$/i,
+                use: ["csv-loader"],
+            },
+            {
+                test: /\.xml$/i,
+                use: ["xml-loader"],
+            },
+
+            The following will have to be required at the top before using its loaders.
+                const toml = require("toml");
+                const yaml = require("yamljs");
+                const json5 = require("json5");
+            {
+                test: /\.toml$/i,
+                type: "json",
+                parser: {
+                    parse: toml.parse,
+                },
+            },
+            {
+                test: /\.yaml$/i,
+                type: "json",
+                parser: {
+                    parse: yaml.parse,
+                },
+            },
+            {
+                test: /\.json5$/i,
+                type: "json",
+                parser: {
+                    parse: json5.parse,
+                },
+            },
+        }
+    }
+
+    resolve:
+    {
+		-	Extensions: This allows us to leave the file extensions when importing. Webpack checks the files with extensions in the given order.
+		{
+			-	Syntax:
+			{
+				resolve: {
+					extensions: [".tsx", ".ts", ".js"], //	This allows us to leave the file extensions when importing. Webpack checks the files with extensions in the given order.
+				},
+			}
+		}
+        -   Absolute imports
+        {
+            -   Syntax:
+            {
+                resolve: {
+                    alias: {
+                        Root: path.resolve(__dirname, "./"),
+                        Asset: path.resolve(__dirname, "./src/assets/"),
+                        Component: path.resolve(__dirname, "./src/components/"),
+                    }
+                }
+            }
+            -   This works in js files and css/scss files.
+        }
+    }
+
+    performance: This is to remove the performance warning due to more bundle size.
+    {
+        -   Syntax
+        performance: { hints: false }
+    }
+
+    devtool:
+    {
+        -   If there are any errors in js, this will show the exact file name and line in the browser console.
+        -   If this is not used, the error will be shown in the bundled js file which is not that helpful.
+        -   To be used only in development.
+        -   Syntax:
+        {
+            devtool: "inline-source-map",
+        }
+    }
+}
+-----------------------------------------------------
+
