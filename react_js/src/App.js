@@ -1,5 +1,5 @@
 import styles from "./App.module.scss";
-import Counter from "Component/counter/Counter"
+import Counter from "Component/counter/Counter";
 
 const App = () => {
     console.log(process.env.ENVKEY1);
