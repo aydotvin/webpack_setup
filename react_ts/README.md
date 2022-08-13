@@ -4,7 +4,7 @@
 
 -	Create the folders `src`, `build` in root directory.
 -	`npm init -y`
--	Create and setup `.prettierrc.js` file in the root. (config available below)
+-	Create and setup `.prettierrc` file in the root. (config available below)
 
 ### TS setup:
 -	`npm i -D typescript @types/react @types/react-dom`
@@ -152,14 +152,14 @@ module.exports = (envs, args) => {
 }
 ```
 
--	`.prettierrc.js` config file data:
+-	`.prettierrc` config file data:
 ```
-module.exports = {
-	semi: true,
-	trailingComma: "all",
-	singleQuote: false,
-	printWidth: 180,
-	tabWidth: 4,
-	endOfLine: "auto",
-};
+{
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": false,
+    "printWidth": 180,
+    "tabWidth": 4,
+    "endOfLine": "auto"
+}
 ```
