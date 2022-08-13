@@ -122,11 +122,12 @@ module.exports = (envs, args) => {
 
 ```
 {
-    "semi": true,
-    "trailingComma": "all",
-    "singleQuote": false,
-    "printWidth": 180,
-    "tabWidth": 4,
-    "endOfLine": "auto"
+	"semi": true,
+	"trailingComma": "all",
+	"singleQuote": false,
+	"printWidth": 180,
+	"tabWidth": 4,
+	"useTabs": true,
+	"endOfLine": "auto"
 }
 ```
