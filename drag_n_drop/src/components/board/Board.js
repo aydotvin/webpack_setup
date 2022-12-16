@@ -10,7 +10,8 @@ const Board = ({ cardItems = [], setCardItems }) => {
 	};
 
 	const handleOnDrop = (ev) => {
-		const droppedState = ev.target.getAttribute("data_state");
+		const dropTarget = ev.target.closest(".dropTarget");
+		const droppedState = dropTarget.getAttribute("data_state");
 		const draggedItemData = JSON.parse(ev.dataTransfer.getData("draggedItemData"));
 		const currentItemState = draggedItemData.state;
 		console.log("currentItemState", currentItemState);
@@ -46,7 +47,7 @@ const Board = ({ cardItems = [], setCardItems }) => {
 		if (cardItems.length > 0) {
 			return (
 				<div className={`${styles.columns}`}>
-					<div className={`${styles.state} ${styles.stateA}`} data_state="A" onDrop={handleOnDrop} onDragOver={handleOnDragOver} onDragEnter={handleOnDragEnter}>
+					<div className={`${styles.state} dropTarget`} data_state="A" onDrop={handleOnDrop} onDragOver={handleOnDragOver} onDragEnter={handleOnDragEnter}>
 						{cardItems.map((card, index) => {
 							if (card.state === "A") {
 								return <Card key={index} cardData={card} />;
@@ -54,7 +55,7 @@ const Board = ({ cardItems = [], setCardItems }) => {
 							return null;
 						})}
 					</div>
-					<div className={`${styles.state} ${styles.stateB}`} data_state="B" onDrop={handleOnDrop} onDragOver={handleOnDragOver} onDragEnter={handleOnDragEnter}>
+					<div className={`${styles.state} dropTarget`} data_state="B" onDrop={handleOnDrop} onDragOver={handleOnDragOver} onDragEnter={handleOnDragEnter}>
 						{cardItems.map((card, index) => {
 							if (card.state === "B") {
 								return <Card key={index} cardData={card} />;
