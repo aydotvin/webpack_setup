@@ -1,0 +1,38 @@
+.board {
+	background-color: lightseagreen;
+	width: 50%;
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+}
+
+.heading {
+	padding: 10px;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid black;
+}
+
+.addCardButton {
+	padding: 5px;
+	border: 2px solid black;
+	font-weight: bold;
+}
+
+.columns {
+	display: flex;
+	background-color: lightblue;
+	flex-grow: 1;
+	min-height: 25vh;
+}
+
+.state {
+	flex: 1;
+	padding: 10px;
+}
+.state:not(:last-child) {
+	border-right: 2px solid black;
+}

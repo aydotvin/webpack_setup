@@ -1,0 +1,28 @@
+.app {
+	background-color: lightcoral;
+	min-height: 100vh;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+	/* justify-content: center; */
+	border: 15px double black;
+}
+
+.subHeading {
+	display: block;
+	font-size: 125%;
+	margin-bottom: 5px;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+
+.note {
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 50%;
+	font-weight: bold;
+	border: 2px solid black;
+	/* background-color: lightgrey; */
+}

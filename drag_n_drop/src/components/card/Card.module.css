@@ -1,0 +1,15 @@
+.card {
+	background-color: yellowgreen;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	margin-bottom: 10px;
+	border: 2px solid black;
+}
+
+.reducedOpacity {
+	opacity: 0.4;
+}
