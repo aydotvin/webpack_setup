@@ -1,9 +1,11 @@
 ## Objective
--	This project demonstrates the concepts that is enough to implement a drag and drop functionality.
+
+-   This project demonstrates the concepts that is enough to implement a drag and drop functionality.
 
 ## How to run?
--	`npm i`
--	`npm run start` - port is set to `4200`, if it's already occupied, change it in `package.json`.
+
+-   `npm i`
+-   `npm run start` - port is set to `4200`, if it's already occupied, change it in `package.json`.
 
 ## Elements
 
@@ -31,3 +33,9 @@
 ## Other methods:
 
 -   `onDragEnd`, `onDragEnter` - these can be used to update the style of the components as required.
+
+
+## References:
+-	[W3Schools - HTML Drag and Drop API](https://www.w3schools.com/html/html5_draganddrop.asp)
+-	[W3Schools - ondragstart Event](https://www.w3schools.com/jsref/event_ondragstart.asp)
+-	[Stack Overflow - onDrop Issue](https://stackoverflow.com/questions/50230048/react-ondrop-is-not-firing/50230145)
