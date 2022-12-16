@@ -20,7 +20,7 @@ const Card = ({ cardData = {} }) => {
 			}}
 		>
 			<h3>{cardData.name}</h3>
-			<h4>{cardData.status}</h4>
+			<h3>State - {cardData.state}</h3>
 		</div>
 	);
 };
