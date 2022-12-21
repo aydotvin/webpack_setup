@@ -4,7 +4,7 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 const commonConfig = require("./webpack.common.js");
 
 module.exports = (envs, args) => {
-	const { flag1 = "defaultvalue" } = envs;
+	const { flag1 = "" } = envs;
 	console.log(envs);
 	console.log(args);
 

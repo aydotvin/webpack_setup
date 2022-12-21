@@ -4,11 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack serve --config ./webpack/webpack.dev.js --env flag1=value1 flag2=value2 flag3",
-		"dev2": "cross-env clientVar=$npm_config_client clientVar2=$npm_config_theme webpack serve --config ./webpack/webpack.dev.js --env flag1=value1 flag2=value2 flag3",
-		"echoMessage": "cross-env-shell usernameVar=$npm_config_name genderVar=$npm_config_gender echo \"Hello $usernameVar, who is $genderVar\"",
-		"greet": "cross-env username=$npm_config_name gender=$npm_config_gender && npm run echoMessage",
-		"copy": "copyfiles -f \"./src/assets/ghost2.jpg\" \"./src/lakeview.jpg\" ./copied/"
+		"start": "cross-env clientVariable=$npm_config_client themeVariable=$npm_config_theme webpack serve --config ./webpack/webpack.dev.js",
+		"echoMessage": "cross-env-shell clientVariable=$npm_config_client themeVariable=$npm_config_theme echo \"Hello $clientVariable, theme is $themeVariable\"",
+		"greet": "cross-env clientVariable=$npm_config_client themeVariable=$npm_config_theme npm run echoMessage"
 	},
 	"keywords": [],
 	"author": "",
