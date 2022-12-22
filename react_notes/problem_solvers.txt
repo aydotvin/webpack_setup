@@ -1,0 +1,36 @@
+REACT MODAL - (react-modal)
+{
+    Issue:
+        When using this package, it throws the following aria related error in console.
+        "Warning: react-modal: App element is not defined. Please use Modal.setAppElement(el) or set appElement={el}"
+    Solution:
+        Put the following as an attribute in the <Modal></Modal> component - ariaHideApp={false}
+        <Modal isOpen={!!props.selectedOption}
+            onRequestClose={props.clearSelectedOption}
+            ariaHideApp={false} << THIS
+            contentLabel="Selected Option"
+            >
+        </Modal>
+
+    Issue:  Modal gets closed when clicked outside the modal.
+    Solution:   Add the following attribute to the Modal component - shouldCloseOnOverlayClick={false}
+                <Modal ... shouldCloseOnOverlayClick={false} ></Modal>
+}
+
+Routing/Router/Route
+{
+    Issue/Requirement:
+        To get the current URL and pathname in React.
+    Solution:
+        Import "useLocation" hook from react-router-dom - this provides the pathname property that gives the current path of the application.
+            import { useLocation } from 'react-router-dom';
+            const usePathname = () => {
+                const location = useLocation();
+                return location.pathname;
+            }
+
+    Issue/Requirement:
+        Use Link without giving any path.
+    Solution:
+        Use # instead of giving a path and the onClick listener can be added for it.
+}

@@ -1,0 +1,373 @@
+Redux:
+{
+	Post link: https://dev.to/aydotvin/react-redux-walk-through-4il1
+
+    Why redux?
+    {
+        -   When we make an api call and then set the state, in this case, if the component gets unmounted by going to a different page or something, then it will be a memory leak.
+        -   Since redux sets the state outside of a component, so this issue will be prevented.
+    }
+
+    -   npm i redux react-redux @reduxjs/toolkit
+
+    -   import { combineReducers, createStore, applyMiddleware } from "redux";
+    -   import { Provider, useSelector, useDispatch } from "react-redux";
+    -   import { configureStore } from "@reduxjs/toolkit";
+
+
+    -   combineReducers is used to combine multiple reducers and make it one to send it to the store.
+    {
+        const reducer = combineReducers({
+            userData: userReducer,
+            ...
+            <more here>
+        });
+    }
+
+    -   createStore is used to create a store (redux state) using the combined reducer and also apply any middlewares if required to perform before the actions reaches the reducers.
+    {
+        const store = createStore(reducer, applyMiddleware(thunk, middelware2, middleware3, etc..));    // this is deprecated.
+        (OR)
+        const store = configureStore({
+            reducer,
+            middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware1, middleware2, etc...),  //  thunk is inbuilt in @reduxjs/toolkit
+        });
+    }
+
+    -   Provider will wrap around the final component (in index.js) that is added to the DOM.
+    {
+        ReactDOM.render(
+            <Provider store={store}>
+                <App></App>
+            </Provider>,
+            document.getElementById("root")
+        );
+    }
+
+    -   useDispatch is used to dispatch the actions to the reducers.
+    {
+        const dispatch = useDispatch();
+        // on event
+        dispatch({type: "SET_INPUT", payload: { username }});
+        dispatch(getUser(userid));  //  action creator
+    }
+
+    -   useSelector is used to access the redux state data.
+    {
+	    const userData = useSelector((state) => state.userData), where userData is the key name given in the combineReducers.
+    }
+
+    -   In the reducer, do not modify the state variable that is present in the reducer's params. If required, assign it to a different variable and then modify the new variable OR better directly return the modified state via spreading old state data and newly added data.
+
+    -   To get the state outside a component,
+        -   import the store
+        -   store.getState() - this returns the entire redux state and the required data can be picked up.
+}
+
+Steps:
+{
+    1.  Declare the action type constants.
+    -   ~/src/state/actionTypes.js
+        ```
+            const actionTypes = {
+                user: {
+                    SET_NEW_USER: "SET_NEW_USER",
+                    SET_USER_ID: "SET_USER_ID"
+                },
+                counter: {
+                    INCREASE_COUNT: "INCREASE_COUNT",
+                },
+            };
+            export default actionTypes;
+        ```
+    
+    2.  Declare the reducers.
+    -   ~/src/state/reducers/counterReducer.js
+        ```
+            import actionTypes from "../actionTypes";
+            const counterReducer = (state = 0, action = {}) => {
+                switch (action.type) {
+                    case actionTypes.counter.INCREASE_COUNT:
+                        return state + action.payload.count;
+
+                    default:
+                        return state;
+                }
+            };
+            export default counterReducer;
+        ```
+    -   ~/src/state/reducers/userReducer.js
+        ```
+            import actionTypes from "../actionTypes";
+            const userReducer = (state = { userId: 1, userData: {} }, action = {}) => {
+                switch (action.type) {
+                    case actionTypes.user.SET_NEW_USER:
+                        return {
+                            ...state,
+                            userData: { ...action.payload },
+                        };
+                    case actionTypes.user.SET_USER_ID:
+                        return {
+                            ...state,
+                            userId: action.payload,
+                        };
+                    default:
+                        return state;
+                }
+            };
+            export default userReducer;
+        ```
+    
+    3.  Combine the reducers.
+    -   ~/src/state/reducers/index.js
+        ```
+            import { combineReducers } from "redux";
+            import userReducer from "./userReducer";
+            import counterReducer from "./counterReducer";
+
+            const reducer = combineReducers({
+	            userData: userReducer,
+                countData: counterReducer,
+            });
+            export default reducer;
+        ```
+    
+    4.  Create the store by passing the combined reducer and the middlewares if any.
+    -   ~/src/state/store.js
+        ```
+            //  import { createStore, applyMiddleware } from "redux";
+            //  import thunk from "redux-thunk";
+            import { configureStore } from "@reduxjs/toolkit";
+
+            import reducer from "./reducers/index";
+
+            // const store = createStore(reducer, applyMiddleware(thunk));  //  createStore is deprecated..
+
+            const store = configureStore({
+                reducer,
+                middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+            });
+
+            // To add additional middlewares,
+            // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware1, middleware2, etc...),  //  thunk is inbuilt in @reduxjs/toolkit
+
+            export default store;
+        ```
+    
+    5.  Declare the actions as required for the features.
+    -   ~/src/state/actions/counterActions.js
+        ```
+            import actionTypes from "../actionTypes";
+            const increaseCount = (countToIncrease) => {
+                return {
+                    type: actionTypes.counter.INCREASE_COUNT,
+                    payload: { count: countToIncrease },
+                };
+            };
+            export { increaseCount };
+        ```
+    -   ~/src/state/actions/userActions.js
+        ```
+            import axios from "axios";
+            import actionTypes from "../actionTypes";
+            const getUser = (userId) => {
+                return async (dispatchMethod, getState) => {
+                    const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+                    const userData = await userResponse.data;
+                    dispatchMethod({ type: actionTypes.user.SET_NEW_USER, payload: userData });
+                    return userData;
+                };
+            };
+            const setUserId = (userId) => {
+                return {
+                    type: actionTypes.user.SET_USER_ID,
+                    payload: userId,
+                };
+            };
+            export { getUser, setUserId };
+        ```
+
+    6.  Implement the features and dispatch the actions as required.
+    -   ~/src/components/counter/Counter.js
+        ```
+            import { useSelector, useDispatch } from "react-redux";
+            import { increaseCount } from "./../../state/actions/counterActions";
+            const Counter = () => {
+                const counterReducer = useSelector((state) => state.counterReducer);
+                const dispatch = useDispatch();
+                const handleIncreaseCount = (count = 1) => {
+                    dispatch(increaseCount(count));
+                };
+                return (
+                    <div>
+                        <h2>Counter</h2>
+                        <h3>{counterReducer}</h3>
+                        <button
+                            onClick={() => {
+                                handleIncreaseCount(1);
+                            }}
+                            style={{ marginRight: "10px" }}
+                        >
+                            Increase count by 1
+                        </button>
+                        <button
+                            onClick={() => {
+                                handleIncreaseCount(5);
+                            }}
+                        >
+                            Increase count by 5
+                        </button>
+                    </div>
+                );
+            };
+            export default Counter;
+        ```
+    -   ~/src/App.js
+        ```
+            import { useState } from "react";
+            import { useDispatch, useSelector } from "react-redux";
+
+            import { getUser, setUserId } from "./state/actions/userActions";
+
+            import Profile from "./components/user/Profile";
+            import Counter from "./components/counter/Counter";
+
+            const App = () => {
+                const userData = useSelector((state) => state.userData);
+                const userId = userData.userId;
+                const [showLoader, setShowLoader] = useState(false);
+                const dispatch = useDispatch();
+
+                const getUserInfo = () => {
+                    setShowLoader(true);
+                    dispatch(getUser(userId))
+                        .then((res) => {
+                            console.log(res);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                        .finally(() => {
+                            setShowLoader(false);
+                        });
+                };
+
+                const updateUserId = (ev) => {
+                    dispatch(setUserId(ev.target.value));
+                };
+
+                return (
+                    <div>
+                        <input type="text" value={userId} onChange={updateUserId} />
+                        <h3>User id is {userId}</h3>
+                        <button onClick={getUserInfo}>Get user info</button>
+                        <br />
+                        {showLoader ? "loading..." : <Profile></Profile>}
+
+                        <hr />
+
+                        <Counter></Counter>
+                    </div>
+                );
+            };
+            export default App;
+        ```
+    
+    7.  Wrap the whole application with the provider and pass the store as a prop.
+    -   ~/src/index.js
+        ```
+            import ReactDOM from "react-dom";
+            import App from "./App";
+            import { Provider } from "react-redux";
+            import store from "./state/store";
+            ReactDOM.render(
+                <Provider store={store}>
+                    <App></App>
+                </Provider>,
+                document.getElementById("root")
+            );
+        ```
+}
+
+Thunk:
+{
+    Why thunk?
+    {
+        -   Thunks allow us to write additional Redux-related logic separate from a UI layer. This can be async calls, generating random values, logic that requries multiple dispatch calls or any time consuming logics.
+    }
+
+    -   On event, dispatch an action creator which returns a function (async) which basically handles setting the loader, calling the API and setting the data in state and turning off the loader, etc.
+}
+
+Persisting the state:
+{
+    -   npm i redux-persist
+    -   ~/src/state/store.js
+        ```
+            //  Import required methods.
+            import { persistStore, persistReducer } from "redux-persist";
+            import storage from "redux-persist/lib/storage";
+
+            //  Setup persist config and persist reducer
+            const persistConfig = {
+                key: "persisted_state_data",
+                storage,
+            };
+            const persistedReducer = persistReducer(persistConfig, reducer);
+
+            //  Pass this persisted reducer to the store configurator and disable the serializableCheck.
+            const store = configureStore({
+                reducer: persistedReducer,
+                middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+                    serializableCheck: false,
+                }),
+            });
+
+            // Create a persisted store along with the normal store and export both.
+            const persistor = persistStore(store);
+
+            export { persistor, store };
+        ```
+    -   ~/src/index.js
+        ```
+            //  Import persisted store and the regular store.
+            import { persistor, store } from "./state/store";
+            import { PersistGate } from "redux-persist/integration/react";
+
+            //  Within the redux provider wrap the app with the PersistGate component and pass the persistStore.
+            ReactDOM.render(
+                <Provider store={store}>
+                    <PersistGate persistor={persistor}>
+                        <App></App>
+                    </PersistGate>
+                </Provider>,
+                document.getElementById("root")
+            );
+        ```
+}
+
+Action creator:
+{
+    -   Return function if the final state data depends/comes from an API.
+        {
+            const getUser = (userId) => {
+                return async (dispatchMethod, getState) => {
+                    // console.log(getState());
+                    // console.log("state data");
+                    const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+                    const userData = await userResponse.data;
+                    dispatchMethod({ type: actionTypes.user.SET_NEW_USER, payload: userData });
+                    return userData;
+                };
+            };
+        }
+    -   Return an object with the type and the payload.
+        {
+            const actionCreator = (newData) => {
+                return {
+                    type: "SET_NEW_DATA",
+                    payload: newData
+                }
+            }
+        }
+}
