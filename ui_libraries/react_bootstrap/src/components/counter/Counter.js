@@ -13,7 +13,7 @@ const Counter = () => {
         <div className={styles.counterContainer}>
             <h2 className={styles.heading}>Counter</h2>
             <p>Count is {count}</p>
-            <button className="btn btn-primary btn-success" onClick={increaseCount}>Increase count</button>
+            <button onClick={increaseCount}>Increase count</button>
             <img src={ghost2} alt=""/>
         </div>
     );
