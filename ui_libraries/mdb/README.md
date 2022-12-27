@@ -5,3 +5,4 @@
     -	`import 'mdb-react-ui-kit/dist/css/mdb.min.css';`
 	-	`import "@fortawesome/fontawesome-free/css/all.min.css";`
 
+[Components samples and API](https://mdbootstrap.com/docs/react/components/accordion/)
