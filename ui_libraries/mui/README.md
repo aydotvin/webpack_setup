@@ -235,3 +235,11 @@ import { TextField, MenuItem } from "@mui/material";
 -   Color and size are applicable to the `Checkbox` component.
 
 ---
+
+## Switch
+
+-   Similar to the checkbox. Import `Switch` instead of `Checkbox`.
+
+---
+
+### Rating
