@@ -258,3 +258,20 @@ import { TextField, MenuItem } from "@mui/material";
 -   `highlightSelectedOnly` - only highlights the highest rating. Useful if emoji's are used to track emotion of user.
 -   `size` - for size (small, medium, large).
 -   `color` - for color.
+
+---
+
+## Autocomplete
+
+-   Import the following,
+    -   `Stack`, `Autocomplete`, `TextField`
+
+### Autocomplete properties:
+
+-   `options` - array of strings or array of objects with label property in each.
+-   `renderInput` - The element to render upon focus.
+-   `value` - selected value (state data).
+-   `onChange` - set the state data to update `value`.
+-   `freeSolo` - boolean - allow user to enter any value. Otherwise only the values in options are allowed to be selected.
+
+---
