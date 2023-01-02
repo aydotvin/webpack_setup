@@ -1,5 +1,6 @@
 import styles from "./App.module.scss";
 import MuiButton from "./components/MuiButton";
+import MuiCheckbox from "./components/MuiCheckbox";
 import MuiRadioButton from "./components/MuiRadioButton";
 import MuiSelect from "./components/MuiSelect";
 import MuiTextField from "./components/MuiTextField";
@@ -12,7 +13,8 @@ const App = () => {
 			{/* <MuiButton></MuiButton> */}
 			{/* <MuiTextField></MuiTextField> */}
 			{/* <MuiSelect></MuiSelect> */}
-			<MuiRadioButton></MuiRadioButton>
+			{/* <MuiRadioButton></MuiRadioButton> */}
+			<MuiCheckbox></MuiCheckbox>
 		</div>
 	);
 };

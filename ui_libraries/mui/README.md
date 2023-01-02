@@ -172,17 +172,66 @@ import { TextField, MenuItem } from "@mui/material";
     -   `RadioGroup` - wraps individual radio components.
     -   `FormControlLabel` - label for individual radio.
     -   `Radio` - radio element.
+    -   `FormHelperText` - helper text.
 
 -   Syntax:
 
 ```
 <FormControl>
-	<FormLabel id="job-experience-group-label">Years of Experience</FormLabel>
+	<FormLabel>Years of Experience</FormLabel>
 	<RadioGroup name="job-experience-group" value={value} onChange={handleExperienceChange} row>
 		<FormControlLabel control={<Radio size="small" color="warning" />} label="0-2" value="0-2" />
 		...
 	</RadioGroup>
 </FormControl>
 ```
+
+-   To show error state, add the `error` prop on the `FormControl` and set the `FormHelperText` at the bottom.
+-   Color and size are applicable to the `Radio` component.
+
+---
+
+## Checkbox:
+
+-   Import the following components,
+
+    -   `FormControl` - wrapper component.
+    -   `FormLabel` - label for group of radios.
+    -   `FormGroup` - wraps individual checkbox components.
+    -   `FormControlLabel` - label for individual checkbox.
+    -   `Checkbox` - checkbox element.
+    -   `FormHelperText` - helper text.
+
+### Multiple checkbox syntax:
+
+```
+<FormControl>
+	<FormLabel>Skills</FormLabel>
+	<FormGroup row>
+		<FormControlLabel
+			label="HTML"
+			value="html"
+			control={<Checkbox checked={skills.includes("html")} onChange={handleSkillChange} size="small" color="warning" />}
+		/>
+		...
+	</FormGroup>
+</FormControl>
+```
+
+### Single checkbox with label syntax:
+
+```
+<FormControlLabel label="I accept terms and conditions" control={<Checkbox checked={acceptTnC} onChange={handleTncChange} />}></FormControlLabel>
+```
+
+### Single checkbox without label syntax:
+
+```
+<Checkbox icon={<BookmarkBorder></BookmarkBorder>} checkedIcon={<Bookmark></Bookmark>} checked={acceptTnC} onChange={handleTncChange} color="success" />
+```
+
+-   To show error state, add the `error` prop on the `FormControl` and set the `FormHelperText` at the bottom.
+
+-   Color and size are applicable to the `Checkbox` component.
 
 ---
