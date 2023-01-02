@@ -33,7 +33,7 @@
 
 -   Syntax: `<Button variant="text">Button text</Button>`
 
-### Varients:
+### Variants:
 
 -   `text` - for non-destructive actions
 -   `contained` - for primary actions
@@ -91,3 +91,52 @@
     -   `exclusive` - Will make the ToggleGroup act like a radio button where only one can be selected at a time.
 
 ---
+
+## Text field
+
+### Variants:
+
+-   `variant="outlined"` - default variant.
+-   `variant="filled"`
+-   `variant="standard"`
+
+### Size:
+
+-   `size="small"`
+-   `size="medium"` - default size.
+
+### Color:
+
+-   primary
+-   secondary
+-   success
+-   error
+-   info
+-   warning
+
+### `type` - to declare the type of the input. (text, password, etc.)
+
+### `required` - makes the input mandatory
+
+### `helperText` - additional text info that is shown at the bottom of the input.
+
+### `InputProps`:
+
+-   An object that contains the props applied to the Input component.
+-   [Input component properties](https://mui.com/material-ui/api/input/)
+
+### `inputProps`:
+
+-   An object that contains the props applied to the input DOM element.
+-   [input DOM element properties](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes)
+
+### Pre and Post fix of symbols:
+
+-   Import the `InputAdornment`
+-   Give it a position attribute. (start or end)
+-   Pass this component as a value for startAdornment or endAdornment in the `InputProps` object.
+-	Example:
+```
+-	<TextField label="Amount" type="number" required InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment> }}></TextField>
+-	<TextField label="Weight" required InputProps={{ endAdornment: <InputAdornment position="end">Kg</InputAdornment> }}></TextField>
+```
