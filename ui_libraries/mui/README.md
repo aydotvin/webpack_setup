@@ -160,6 +160,54 @@ import { TextField, MenuItem } from "@mui/material";
 -   To make a multi select, pass `multiple` as true in the `SelectProps` object and pass the `SelectProps` as a property to the `TextField`.
 
 -   `size`, `color` and `helperText` are applicable to this.
+### Example from neo:
+```
+	<Select
+		value={disclosureAction}
+		onChange={handleDisclosureActionChange}
+		disabled={isDisclosureActionSelectDisabled}
+		displayEmpty={true}
+		className={`${styles.disclosureActions} ${textColorClass}`}
+		size="small"
+		IconComponent={SelectDownArrow}
+		sx={{
+			"&& .MuiOutlinedInput-notchedOutline": {
+				border: "1px solid #484850",
+			},
+		}}
+		MenuProps={{
+			sx: {
+				"&& .Mui-selected": {
+					backgroundColor: "#BDD8FA",
+					color: "black",
+				},
+				"&& :not(.Mui-selected)": {
+					color: "#939393",
+				},
+				"&& .MuiList-root": {
+					padding: "8px",
+				},
+			},
+		}}
+		style={{ color: "#3876C4", fontFamily: "poppins_medium", border: "1px solid #707070" }}
+	>
+		<MenuItem value="" style={{ ...optionStyles, display: "none", backgroundColor: "white" }} disabled>
+			Please Select
+		</MenuItem>
+		<MenuItem value="value_1" style={optionStyles}>
+			Disclosure Read
+		</MenuItem>
+		<MenuItem value="value_2" style={optionStyles}>
+			Disclosure Not Read
+		</MenuItem>
+		<MenuItem value="value_3" style={optionStyles}>
+			Revert to Verbal
+		</MenuItem>
+		<MenuItem value="value_4" style={{ ...optionStyles, borderBottom: "none" }}>
+			Disclosure Disconnected/Abandoned
+		</MenuItem>
+	</Select>
+```
 
 ---
 
