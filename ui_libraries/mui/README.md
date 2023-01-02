@@ -242,4 +242,19 @@ import { TextField, MenuItem } from "@mui/material";
 
 ---
 
-### Rating
+## Rating
+
+-   Import the following,
+    -   `Stack`, `Rating`
+
+### Rating properties:
+
+-   `value` - takes a number for showing the ratings.
+-   `onChange` - returns the event and a number that is the user given rating.
+-   `precision` - determines the resolution/intervals of the rating (0-1).
+-   `icon` - icon to display for selected rating.
+-   `emptyIcon` - icon to display for non selected rating.
+-   `readOnly` - makes it readonly.
+-   `highlightSelectedOnly` - only highlights the highest rating. Useful if emoji's are used to track emotion of user.
+-   `size` - for size (small, medium, large).
+-   `color` - for color.

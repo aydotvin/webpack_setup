@@ -2,6 +2,7 @@ import styles from "./App.module.scss";
 import MuiButton from "./components/MuiButton";
 import MuiCheckbox from "./components/MuiCheckbox";
 import MuiRadioButton from "./components/MuiRadioButton";
+import MuiRating from "./components/MuiRating";
 import MuiSelect from "./components/MuiSelect";
 import MuiSwitch from "./components/MuiSwitch";
 import MuiTextField from "./components/MuiTextField";
@@ -16,7 +17,8 @@ const App = () => {
 			{/* <MuiSelect></MuiSelect> */}
 			{/* <MuiRadioButton></MuiRadioButton> */}
 			{/* <MuiCheckbox></MuiCheckbox> */}
-			<MuiSwitch></MuiSwitch>
+			{/* <MuiSwitch></MuiSwitch> */}
+			<MuiRating></MuiRating>
 		</div>
 	);
 };
