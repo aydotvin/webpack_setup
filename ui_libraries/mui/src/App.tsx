@@ -1,5 +1,6 @@
 import styles from "./App.module.scss";
 import MuiButton from "./components/MuiButton";
+import MuiRadioButton from "./components/MuiRadioButton";
 import MuiSelect from "./components/MuiSelect";
 import MuiTextField from "./components/MuiTextField";
 import MuiTypography from "./components/MuiTypography";
@@ -10,7 +11,8 @@ const App = () => {
 			{/* <MuiTypography></MuiTypography> */}
 			{/* <MuiButton></MuiButton> */}
 			{/* <MuiTextField></MuiTextField> */}
-			<MuiSelect></MuiSelect>
+			{/* <MuiSelect></MuiSelect> */}
+			<MuiRadioButton></MuiRadioButton>
 		</div>
 	);
 };

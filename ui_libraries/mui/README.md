@@ -160,3 +160,29 @@ import { TextField, MenuItem } from "@mui/material";
 -   To make a multi select, pass `multiple` as true in the `SelectProps` object and pass the `SelectProps` as a property to the `TextField`.
 
 -   `size`, `color` and `helperText` are applicable to this.
+
+---
+
+## Radio:
+
+-   Import the following components,
+
+    -   `FormControl` - wrapper component.
+    -   `FormLabel` - label for group of radios.
+    -   `RadioGroup` - wraps individual radio components.
+    -   `FormControlLabel` - label for individual radio.
+    -   `Radio` - radio element.
+
+-   Syntax:
+
+```
+<FormControl>
+	<FormLabel id="job-experience-group-label">Years of Experience</FormLabel>
+	<RadioGroup name="job-experience-group" value={value} onChange={handleExperienceChange} row>
+		<FormControlLabel control={<Radio size="small" color="warning" />} label="0-2" value="0-2" />
+		...
+	</RadioGroup>
+</FormControl>
+```
+
+---
