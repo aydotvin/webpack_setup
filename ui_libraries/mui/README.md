@@ -6,26 +6,28 @@
 
     -   `npm install @mui/icons-material` for the icons set provided by mui.
 
+---
+
 ## Typography
 
 -   Import `Typography` component from material ui library.\
     `import { Typography } from "@mui/material";`
 
--   Use the component, set the appropriate varient and put the text content within the tags.
+-   Use the component, set the appropriate variant and put the text content within the tags.
 
-### Varients:
+### Variants:
 
 -   `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `subtitle1`, `subtitle2`, `body1`, `body2`.
--   varient `subtitle1` and `subtitle2` uses the h6 tag with different styles.
+-   variant `subtitle1` and `subtitle2` uses the h6 tag with different styles.
 
--   varient `body1` is the default value of varient property.
+-   variant `body1` is the default value of variant property.
 
--   By passing the `component` prop to a `<Typography>` component, any varient style can be used on a different html element.\
+-   By passing the `component` prop to a `<Typography>` component, any variant style can be used on a different html element.\
     `<Typography variant="h3" component={"h1"}>H3 heading</Typography>`
 
-    -   The above example says, I need a `h1` html tag with the style of an `h3` varient.
+    -   The above example says, I need a `h1` html tag with the style of an `h3` variant.
 
--   `gutterBottom` prop is used to add a margin to the Typography component. Larger the varient, larger is the margin applied on it.
+-   `gutterBottom` prop is used to add a margin to the Typography component. Larger the variant, larger is the margin applied on it.
 
 ---
 
@@ -78,7 +80,7 @@
 
 -   Import ButtonGroup from `@mui/material` and wrap the related buttons with it.
 -   Pass the `orientation` attribute to the `<ButtonGroup>` to make the buttons vertical/horizontal. Horizontal by default.
--   `varient`, `size` and `color` is to be passed to the `<ButtonGroup>`, but can also be passed to inner individual `<Button>`s.
+-   `variant`, `size` and `color` is to be passed to the `<ButtonGroup>`, but can also be passed to inner individual `<Button>`s.
 -   onClick is to be passed to individual `<Button>`s, but can also be passed to the `<ButtonGroup>`.
 
 ### Toggle group:
@@ -135,8 +137,26 @@
 -   Import the `InputAdornment`
 -   Give it a position attribute. (start or end)
 -   Pass this component as a value for startAdornment or endAdornment in the `InputProps` object.
--	Example:
+-   Example:
+
 ```
 -	<TextField label="Amount" type="number" required InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment> }}></TextField>
 -	<TextField label="Weight" required InputProps={{ endAdornment: <InputAdornment position="end">Kg</InputAdornment> }}></TextField>
 ```
+
+---
+
+## Select: Using TextField
+
+-   This takes the entire available width, so fix the parent container width.
+-   Import the TextField and the MenuItem from mui.
+
+```
+import { TextField, MenuItem } from "@mui/material";
+```
+
+-   Pass a `select` property to the `TextField` and pass the `MenuItem`s with value and display text inside the `TextField`.
+
+-   To make a multi select, pass `multiple` as true in the `SelectProps` object and pass the `SelectProps` as a property to the `TextField`.
+
+-   `size`, `color` and `helperText` are applicable to this.
