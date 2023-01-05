@@ -1,6 +1,7 @@
 # Styled Components
--	`npm i`
--	`npm run dev`
+
+-   `npm i`
+-   `npm run dev`
 
 ## Index:
 
@@ -41,9 +42,9 @@ const StyledButton = styled.button`
 
 -   Export and import the component as required and use as any other component.
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Benefits:
 
@@ -53,9 +54,9 @@ const StyledButton = styled.button`
 -   The styles are localised to the component, hence easy to maintain and debug.
 -   Auto vendor prefixing for newer features.
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Accessing props:
 
@@ -85,18 +86,18 @@ export const StyledButton = styled.button`
 
 ```
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Structure:
 
 -   `<Component>` folder > `Component.js` + `Component.styles.js`
 -   `counter > Counter.js + Counter.styles.js`
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Extending styled components:
 
@@ -111,9 +112,9 @@ export const FancyButton = styled(StyledButton)`
 
 ```
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Displaying as another element:
 
@@ -124,9 +125,9 @@ export const FancyButton = styled(StyledButton)`
 
 ```
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Adding attributes:
 
@@ -145,9 +146,9 @@ export const SubmitButton = styled(StyledButton).attrs(({ name, type, age }) => 
 
 ```
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Adding animations:
 
@@ -168,9 +169,9 @@ const rotate = keyframes`
 
 ```
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Theming:
 
@@ -213,9 +214,9 @@ export const ThemedButton = styled(StyledButton)`
 
 ```
 
----
+> [Go to index](#index)
 
-> [Index](#index)
+---
 
 ## Global styles:
 
@@ -249,7 +250,10 @@ const App = () => {
 };
 ```
 
+> [Go to index](#index)
+
 ---
 
 ## Reference:
+
 [Codevolution](https://www.youtube.com/playlist?list=PLC3y8-rFHvwgu-G08-7ovbN9EyhF_cltM)
