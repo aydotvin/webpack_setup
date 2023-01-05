@@ -1,7 +1,3 @@
-# Index
-
-1. [Styled components](./../miscellaneous_concepts/styled_components/README.md)
-
 ## What is react?
 
 -   One of the most popular JS library that was lauched to public in 2011 by facebook.
