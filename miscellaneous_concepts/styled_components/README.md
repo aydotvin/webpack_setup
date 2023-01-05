@@ -83,7 +83,6 @@ export const StyledButton = styled.button`
 
 ```
 <StyledButton variant="outlined">Styled Button 2</StyledButton>
-
 ```
 
 > [Go to index](#index)
@@ -109,7 +108,6 @@ export const FancyButton = styled(StyledButton)`
 	background-image: linear-gradient(to right, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
 	border: none;
 `;
-
 ```
 
 > [Go to index](#index)
@@ -122,7 +120,6 @@ export const FancyButton = styled(StyledButton)`
 
 ```
 <FancyButton as="a">Fancy Button 2</FancyButton>
-
 ```
 
 > [Go to index](#index)
@@ -143,7 +140,6 @@ export const SubmitButton = styled(StyledButton).attrs(({ name, type, age }) => 
 		"data-age": age,
 	};
 })
-
 ```
 
 > [Go to index](#index)
@@ -166,7 +162,6 @@ const rotate = keyframes`
 		transform: translateX(0)
 	}
 `;
-
 ```
 
 > [Go to index](#index)
@@ -211,7 +206,6 @@ export const ThemedButton = styled(StyledButton)`
 	border: 2px solid ${(props) => props.theme.dark.primary};
 	...
 `;
-
 ```
 
 > [Go to index](#index)
