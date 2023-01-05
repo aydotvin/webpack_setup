@@ -1,3 +1,7 @@
+# Index
+
+1. [Styled components](./../miscellaneous_concepts/styled_components/README.md)
+
 ## What is react?
 
 -   One of the most popular JS library that was lauched to public in 2011 by facebook.
@@ -197,16 +201,16 @@
 -   useEffect is used in the outermost component to setup event listeners, make ajax calls to get additional data and stuff like that when the component mounts..
 -   useEffect dependency runs when ever the dependency gets changed. It could be state or prop data..
 -   Returning a arrow function within useEffect will run the clean up code when that component is unmounted.. To prevent memory leaks and unnecesary connections to external APIs.
--   Always start component names with a capital letter. React treats components starting with lowercase letters as DOM tags. For example, <div /> represents an HTML div tag, but <Welcome /> represents a component and requires Welcome to be in scope.
+-   Always start component names with a capital letter. React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires Welcome to be in scope.
 -   children is a reserved keyword under props. If any element/text is present within a called component, all that text/elements will be available to the called component via propss.children property.
 -   No limitations to what you can pass as props in react. string, numbers, objects, arrays, functions, other components, etc.
 -   To reuse non-UI functionality between components, extract it into a separate JavaScript feature. The components may import it and use that function, object, or a class, without extending it.
--   Inline styles should be inside an object. <h1 style={{color: "red", propertyKey: "propertyValue"}}>Hello Style!</h1>
+-   Inline styles should be inside an object. `<h1 style={{color: "red", propertyKey: "propertyValue"}}>Hello Style!</h1>`
 -   To change the starting file for react from index.js to anything else:
-    index.js will have _ReactDOM.render(<Home></Home>, document.getElementById("root"));_ line.
-    With everything deleted, create an "App.js" in src folder. (Note: will have to change the path in project's path file.)
-    Run "npm run eject" to get "config" and "scripts" folder.
-    Go to "config > paths.js" and search for "appIndexJs" and change its path to App.js
+    -   `index.js` will have `ReactDOM.render(<Home></Home>, document.getElementById("root"));` line.
+    -   With everything deleted, create an "App.js" in src folder. (Note: will have to change the path in project's path file.)
+    -   Run `npm run eject` to get `config` and `scripts` folder.
+    -   Go to `config > paths.js` and search for `appIndexJs` and change its path to App.js
 
 ## Class vs functional component:
 
