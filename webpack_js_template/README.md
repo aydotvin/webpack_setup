@@ -126,7 +126,7 @@ module.exports = (envs, args) => {
 	"trailingComma": "all",
 	"singleQuote": false,
 	"printWidth": 180,
-	"tabWidth": 4,
+	"tabWidth": 2,
 	"useTabs": true,
 	"endOfLine": "auto"
 }
