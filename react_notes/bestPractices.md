@@ -1,11 +1,11 @@
--   Use custom hooks for repeated actions.
--   Use react query.
+- Use custom hooks for repeated actions.
+- Use react query.
 
 ### Prop types:
 
--   npm i prop-types
--   After the component, add the following code.
--   Data types can be found here -> https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes
+- npm i prop-types
+- After the component, add the following code.
+- Data types can be found here -> https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes
 
 ```
 	ComponentName.propTypes = {
@@ -14,7 +14,7 @@
 	};
 ```
 
--   For class component:
+- For class component:
 
 ```
 	class ReactComponent extends React.Component {
@@ -27,19 +27,20 @@
 	}
 ```
 
--   Reference:
-    -   [Log Rocket](https://blog.logrocket.com/validating-react-component-props-with-prop-types-ef14b29963fc/)
-    -   [Free Code Camp](https://www.freecodecamp.org/news/how-to-use-proptypes-in-react/)
+- Reference:
+  - [Log Rocket](https://blog.logrocket.com/validating-react-component-props-with-prop-types-ef14b29963fc/)
+  - [Free Code Camp](https://www.freecodecamp.org/news/how-to-use-proptypes-in-react/)
 
 ---
 
 ### Default props:
 
--	If the default values for the props are declared using defaultProps, the propType checks can be added to the default values also.
+- If the default values for the props are declared using defaultProps, the propType checks can be added to the default values also.
 
--   propType check do not happen if the default values are declared in the top itself.
+- propType check do not happen if the default values are declared in the top itself.
 
--   Example:
+- Example:
+
 ```
 	const Component1 = ({ name, field = 23 }) => {
 		return (
@@ -61,7 +62,8 @@
 	};
 ```
 
--   For class component:
+- For class component:
+
 ```
 	class Greeting extends React.Component {
 		static defaultProps = {

@@ -1,8 +1,8 @@
 ## Custom Hook Counter
 
--   Custom hook file name starts with `use` - useCounter, useLogic, useData, etc.
--   Extract the state and other data logic to this new file.
--   Return the required data after all logics.
+- Custom hook file name starts with `use` - useCounter, useLogic, useData, etc.
+- Extract the state and other data logic to this new file.
+- Return the required data after all logics.
 
 ```
 const useCounter = () => {
@@ -16,7 +16,7 @@ const useCounter = () => {
 };
 ```
 
--   Use the custom hook inside multiple related components which returns the required data in required format.
+- Use the custom hook inside multiple related components which returns the required data in required format.
 
 ```
 const ClickCounter = () => {
