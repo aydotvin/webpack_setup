@@ -1,4 +1,4 @@
-Redux:
+## Redux:
 {
 	Post link: https://dev.to/aydotvin/react-redux-walk-through-4il1
 
@@ -64,7 +64,7 @@ Redux:
         -   store.getState() - this returns the entire redux state and the required data can be picked up.
 }
 
-Steps:
+## Steps:
 {
     1.  Declare the action type constants.
     -   ~/src/state/actionTypes.js
@@ -289,7 +289,7 @@ Steps:
         ```
 }
 
-Thunk:
+## Thunk:
 {
     Why thunk?
     {
@@ -299,7 +299,7 @@ Thunk:
     -   On event, dispatch an action creator which returns a function (async) which basically handles setting the loader, calling the API and setting the data in state and turning off the loader, etc.
 }
 
-Persisting the state:
+## Persisting the state:
 {
     -   npm i redux-persist
     -   ~/src/state/store.js
@@ -346,7 +346,7 @@ Persisting the state:
         ```
 }
 
-Action creator:
+## Action creator:
 {
     -   Return function if the final state data depends/comes from an API.
         {
