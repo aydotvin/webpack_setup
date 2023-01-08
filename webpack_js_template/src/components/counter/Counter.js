@@ -10,8 +10,8 @@ const Counter = () => {
 	};
 
 	return (
-		<div className={`flex-col ai-center ${styles.counterContainer}`}>
-			<h2 className={styles.heading}>Counter</h2>
+		<div className={`${styles.counter}`}>
+			<h2 className={`page-heading`}>Counter</h2>
 			<p>Count is {count}</p>
 			<button onClick={increaseCount}>Increase count</button>
 			{/* <img src={ghost2} alt="test image" className={`${styles.image}`} /> */}

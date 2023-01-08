@@ -13,6 +13,7 @@ module.exports = (envs, args) => {
 			hot: true,
 			open: true,
 			port: 9000,
+			historyApiFallback: true,
 		},
 		plugins: [
 			new webpack.DefinePlugin({
