@@ -4,11 +4,11 @@
 @import "./utilities";
 
 html {
-	font-size: 10px;
+  font-size: 10px;
 }
 
 body {
-	background-color: map-get(v.$global, light, bodyBackgroundColor);
-	font-family: "poppins-regular";
-	font-size: 1.6rem;
+  background-color: map-get(v.$global, light, bodyBackgroundColor);
+  font-family: "poppins-regular";
+  font-size: 1.6rem;
 }
