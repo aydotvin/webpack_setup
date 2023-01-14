@@ -150,7 +150,12 @@ useEffect(() => {
 
 - Similar to useState, but this allow us to perform a variety of actions on the same state data based on the type of the action requested.
 - Syntax:\
-  `const [stateData, dispatch] = useReducer(reducer, initialState, initFunction);` - reducer is a function that handles all the different actions that are performed on the state data. - Based on the action type passed, the reducer will modify the state and returns it and the state will get updated. - initialState is the initial state for the component. - initFunction - this is used to lazily initialize the initial state data.
+  `const [stateData, dispatch] = useReducer(reducer, initialState, initFunction);`
+
+  - reducer is a function that handles all the different actions that are performed on the state data.
+  - Based on the action type passed, the reducer will modify the state and returns it and the state will get updated.
+  - initialState is the initial state for the component.
+  - initFunction - this is used to lazily initialize the initial state data.
 
 - Reducer:
 
@@ -183,6 +188,28 @@ useEffect(() => {
 
 ---
 
+## useContext:
+
+- This hook is used makes the parent's state data and its setters available to all its child components without prop drilling.
+- Steps:
+  - Create a context without or without initial state.
+  - Wrap the parent component with the context provider and pass the required data in value attribute.
+  - In the child component, call the useContext and pass it the context that was created earlier. This will give access to the parent's data to the child from `value`.
+
+---
+
+## Combining useReducer and useContext:
+
+- In the parent component, import the context and wrap it around the outer most component with `Context.Provider`.
+- Import the useReducer and create a state data and dispatch function from it by passing the reducer and the initial state.
+- Create methods that dispatch actions to update the reducer state.
+- Add the state data and the modifier methods to an object and pass this object as a value to the `value` prop to the context provider.
+- In the child component,
+  - Import the required context and pass it to `useContext`. This returns the data that is passed in the `value` prop.
+  - Use this data to display the things and make changes to the state.
+
+---
+
 ## useRef:
 
 - This hook is used for three purposes,
@@ -190,16 +217,6 @@ useEffect(() => {
   - To access elements and use the native javascript functions like focus(), blur(), etc. to read, update the element.
   - To keep track of the previous state in the UI.
 - Does not cause re-render of component when ref value is updated.
-
----
-
-## useContext:
-
-- This hook is used makes the parent's state data and its setters available to all its child components without prop drilling.
-- Steps:
-  - Create a context without or without initial state.
-  - Wrap the parent component with the context provider and pass the required data in value attribute.
-  - In the child component, call the useContext and pass it the context that was created earlier. This will give access to the parent's data to the child.
 
 ---
 

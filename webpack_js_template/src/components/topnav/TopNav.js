@@ -8,6 +8,7 @@ const TopNav = () => {
       <RouterLink to="/app">App</RouterLink>
       <RouterLink to="/about">About</RouterLink>
       <RouterLink to="/app/counter">Counter</RouterLink>
+      <RouterLink to="/app/profile">Profile</RouterLink>
     </nav>
   );
 };
