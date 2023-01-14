@@ -25,7 +25,7 @@ export const profileSlice = createSlice({
   },
 });
 
-export const getProfileDetails = createAsyncThunk("profile/getProfileDetails", async (userId) => {
+const getProfileDetails = createAsyncThunk("profile/getProfileDetails", async (userId) => {
   try {
     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
     console.log("fetch response", response);
