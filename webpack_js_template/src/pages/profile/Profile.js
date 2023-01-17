@@ -5,13 +5,12 @@ import styles from "./Profile.module.scss";
 import { actions } from "./profileSlice";
 
 const Profile = () => {
-  const [userId, setUserId] = useState(-1);
   const dispatch = useDispatch();
 
   const profileData = useSelector((state) => state.profileData);
 
   const getDetails = () => {
-    dispatch(actions.getProfileDetails(userId)).then((res) => {
+    dispatch(actions.getProfileDetails(profileData.userId)).then((res) => {
       console.log("res", res);
     });
   };
@@ -37,10 +36,10 @@ const Profile = () => {
       <div className={`${styles.inputRow}`}>
         <input
           type="number"
-          value={userId}
+          value={profileData.userId}
           onChange={(ev) => {
             const tempUserId = Number(ev.target.value) || 0;
-            setUserId(tempUserId);
+            dispatch(actions.setUserId({ userId: tempUserId }));
           }}
           placeholder="Enter User ID (1 - 10)"
         />

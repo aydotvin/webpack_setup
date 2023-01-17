@@ -3,8 +3,12 @@ import { handleResponse } from "../../utilities/responseHandler";
 
 export const profileSlice = createSlice({
   name: "profile",
-  initialState: { profile: null, error: "", status: "" },
-  reducers: {},
+  initialState: { profile: null, error: "", status: "", userId: null },
+  reducers: {
+    setUserId: (state, action) => {
+      state.userId = action.payload.userId;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getProfileDetails.pending, (state, action) => {
